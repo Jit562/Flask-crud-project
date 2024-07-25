@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block bodycontent %}
+
+<section class="update-section mt-5 container">
+    
+    <form class="row g-3" action="/update/{{todo.sn}}" method="post">
+        <h1 class="center">Update the data here</h1>
+        
+        <div class="col-12">
+          <label for="title" class="form-label">Titale</label>
+          <input type="text" class="form-control" name="title" id="title" value="{{todo.title}}">
+        </div>
+        <div class="col-12">
+          <label for="desc" class="form-label">Description</label>
+          <input type="text" class="form-control" name="desc" id="desc" value="{{todo.desc}}">
+        </div>
+        
+        <div class="col-12">
+          <button type="submit" class="btn btn-dark">Update</button>
+        </div>
+      </form>
+</section>
+
+{% endblock bodycontent %}  

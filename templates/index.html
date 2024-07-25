@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block bodycontent %}
+   
+  <section class="form-section mt-4 container">
+
+    <form class="row g-3" action="/" method="post">
+        <h1 class="center">Create the data here</h1>
+        
+        <div class="col-12">
+          <label for="title" class="form-label">Titale</label>
+          <input type="text" class="form-control" name="title" id="title" placeholder="title your">
+        </div>
+        <div class="col-12">
+          <label for="desc" class="form-label">Description</label>
+          <textarea class="form-control" id="desc"  name="desc" rows="6"></textarea>
+        </div>
+        
+        
+        <div class="col-12">
+          <button type="submit" class="btn btn-dark">Sign in</button>
+        </div>
+      </form>
+  </section>
+
+
+  <section class="table-section mt-5 container">
+    <h2 class="mb-4">Show data in table form </h2>
+    {% if quer|length == 0 %}
+        
+      <div class="alert alert-dark" role="alert">
+        No records available Add your data
+      </div>
+    {% else %}
+    
+    <table class="table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Titale</th>
+            <th scope="col">Descriptio</th>
+            <th scope="col">Created-Date</th>
+            <th colspan="2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for querr in quer %}
+          <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{querr.title}}</td>
+            <td>{{querr.desc}}</td>
+            <td>{{querr.created_at}}</td>
+            
+            <td colspan="2">
+              <a href="/delete/{{querr.sn}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Del</a>
+              <a href="/update/{{querr.sn}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Edit</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+  </section>
+
+{% endblock bodycontent %}    
